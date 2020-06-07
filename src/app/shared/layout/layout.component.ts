@@ -14,8 +14,9 @@ export class LayoutComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
-    this.isHandset$ = this.breakpointObserver
-      .observe([Breakpoints.Handset])
-      .pipe(map(result => result.matches));
+    this.isHandset$ = this.breakpointObserver.observe([Breakpoints.Handset]).pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
   }
 }

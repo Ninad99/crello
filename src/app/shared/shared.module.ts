@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,6 +17,7 @@ import { LayoutComponent } from './layout/layout.component';
 const components = [LayoutComponent];
 
 const modules = [
+  RouterModule,
   LayoutModule,
   MatButtonModule,
   MatToolbarModule,
