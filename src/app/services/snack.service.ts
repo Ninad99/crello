@@ -31,7 +31,7 @@ export class SnackService {
       this.snackBar._openedSnackBarRef
         .onAction()
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        .pipe(tap(_ => this.router.navigate(['/login'])))
+        .pipe(tap(_ => this.router.navigate(['/', 'login'])))
         .subscribe()
     );
   }
