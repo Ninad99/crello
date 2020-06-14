@@ -1,0 +1,21 @@
+<main class="py-4">
+  <div class="container-fluid" *ngIf="!(isLoggedIn$ | async)">
+    <div class="row flex-column justify-content-center align-items-center">
+
+      <button class="my-3" mat-raised-button appGoogleSignin>
+        <img src="/assets/img/google-logo.svg" height="17px" width="17px" alt="Google">  Login with Google
+      </button>
+
+      <h4>OR</h4>
+
+      <app-email-login></app-email-login>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="(isLoggedIn$ | async)">
+    <div class="row flex-column justify-content-center align-items-center">
+      <p>You're already logged in</p>
+      <button class="my-3" mat-raised-button [routerLink]="['/', 'kanban']">Open Kanban Boards</button>
+    </div>
+  </div>
+</main>
