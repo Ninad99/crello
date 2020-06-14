@@ -12,9 +12,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LayoutComponent } from './layout/layout.component';
+import { DeleteButtonComponent } from './delete-button/delete-button.component';
 
-const components = [LayoutComponent];
+const components = [LayoutComponent, DeleteButtonComponent];
 
 const modules = [
   RouterModule,
@@ -29,11 +31,12 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
   declarations: [...components],
   imports: [CommonModule, ...modules],
-  exports: [...components, ...modules],
+  exports: [...components, ...modules]
 })
 export class SharedModule {}
