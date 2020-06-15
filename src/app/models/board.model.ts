@@ -5,4 +5,5 @@ export interface Board {
   title?: string;
   priority?: number;
   tasks?: Task[];
+  projectId?: string;
 }
