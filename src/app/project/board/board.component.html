@@ -1,0 +1,12 @@
+<section class="board container-fluid">
+  <div class="row py-4 justify-content-center align-items-center" *ngIf="project$ | async as project; else loader">
+    <h1>{{ project.title }}</h1>
+  </div>
+
+  
+  <ng-template #loader>
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</section>
