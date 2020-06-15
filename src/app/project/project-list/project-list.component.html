@@ -1,0 +1,28 @@
+<section class="container-fluid">
+  <div class="project-list row py-5 justify-content-center align-items-center">
+    <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
+      <h2>Open an existing project</h2>
+      <h3>OR</h3>
+      <button mat-raised-button color="primary" (click)="openCreateProjectDialog()">
+        Create a new Project!
+      </button>
+    </div>
+    <div class="col-md-8 py-4 d-flex flex-column justify-content-center align-items-stretch">
+      <ng-container *ngIf="projects$ | async as projects;else loader">
+        <h2 *ngIf="projects.length === 0">You don't have any created projects.</h2>
+
+        <mat-selection-list *ngIf="projects.length > 0" [multiple]="false">
+          <h2>Your projects:</h2>
+          <mat-list-option *ngFor="let p of projects" [routerLink]="p.projectId">
+            <mat-icon matListIcon>event_note</mat-icon>
+            <h3 matLine> {{ p.title }} </h3>
+          </mat-list-option>
+        </mat-selection-list>
+      </ng-container>
+
+      <ng-template #loader>
+        <mat-spinner [diameter]="40"></mat-spinner>
+      </ng-template>
+    </div>
+  </div>
+</section>
