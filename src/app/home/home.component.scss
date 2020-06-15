@@ -1,7 +1,11 @@
+@import '../variables';
+
 .homepage {
+  margin-top: $navbar-height;
 
   .hero {
     background-color: #e5e5e5;
+    min-height: calc(100vh - 58px);
   }
 
   &-title {
@@ -9,6 +13,8 @@
   }
 
   &-subtitle {
+    text-align: center;
     font-size: 1.25rem;
+    font-weight: lighter;
   }
 }
