@@ -13,7 +13,13 @@ const routes: Routes = [
     path: 'kanban',
     loadChildren: () => import('./kanban/kanban.module').then(m => m.KanbanModule),
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'projects',
+    loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
+    canActivate: [AuthGuard]
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
