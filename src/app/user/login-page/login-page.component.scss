@@ -1,0 +1,6 @@
+@import '../../variables';
+
+.login-page {
+  margin-top: $navbar-height;
+  min-height: calc(100vh - 58px);
+}
