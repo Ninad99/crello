@@ -10,12 +10,19 @@ import { LoginSuccess } from './store/actions/auth.actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private afAuth: AngularFireAuth, private store: Store<AppState>) {}
+  loading: boolean;
+
+  constructor(private afAuth: AngularFireAuth, private store: Store<AppState>) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.afAuth.onAuthStateChanged((user: firebase.User) => {
       if (user) {
         this.store.dispatch(new LoginSuccess());
+        this.loading = false;
+      } else {
+        this.loading = false;
       }
     });
   }

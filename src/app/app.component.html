@@ -1,3 +1,10 @@
-<app-layout>
+<ng-template #preloader>
+  <section class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+    <mat-spinner></mat-spinner>
+    <h2 class="my-3">📋 Crello</h2>
+  </section>
+</ng-template>
+
+<app-layout *ngIf="!loading; else preloader">
   <router-outlet></router-outlet>
 </app-layout>
