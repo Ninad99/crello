@@ -1,5 +1,14 @@
+@import '../../variables';
+
 .sidenav-container {
   height: 100%;
+
+  .mat-toolbar.mat-primary {
+    height: $navbar-height;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
   
   .logo {
     font-size: 1.2em;
@@ -18,12 +27,6 @@
 
   .sidenav .mat-toolbar {
     background: inherit;
-  }
-
-  .navbar .mat-toolbar.mat-primary {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
   }
 
   .fill-space {
