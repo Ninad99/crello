@@ -13,8 +13,7 @@
         <a mat-list-item [routerLink]="['/']" (click)="drawer.close()" >🏠 Home</a>
         <a *ngIf="!(isLoggedIn$ | async)" mat-list-item [routerLink]="['/login']" (click)="drawer.close()" >👨‍💻 Login</a>
         <ng-container *ngIf="(isLoggedIn$ | async)">
-          <a mat-list-item [routerLink]="['/', 'kanban']" (click)="drawer.close()">📜 Open Kanban Boards</a>
-          <a mat-list-item [routerLink]="['/', 'projects']" (click)="drawer.close()">📜 Open Project Boards</a>
+          <a mat-list-item [routerLink]="['/', 'projects']" (click)="drawer.close()">📜 Open Projects</a>
           <a mat-list-item (click)="logout(); drawer.close();" >🏃 Logout</a>
         </ng-container>
       </mat-nav-list>
@@ -37,8 +36,7 @@
           <a mat-button [routerLink]="['/login']">👨‍💻 Login</a>
         </div>
         <div *ngIf="!(isHandset$ | async) && (isLoggedIn$ | async)">
-          <a mat-button [routerLink]="['/', 'kanban']">📜 Open Kanban Boards</a>
-          <a mat-button [routerLink]="['/', 'projects']">📜 Open Project Boards</a>
+          <a mat-button [routerLink]="['/', 'projects']">📜 Open Projects</a>
           <a mat-button *ngIf="(isLoggedIn$ | async)" (click)="logout()">🏃 Logout</a>
         </div>
       </mat-toolbar>
