@@ -11,9 +11,16 @@ import { MatListModule } from '@angular/material/list';
 
 import { ProjectListComponent } from './project-list/project-list.component';
 import { CreateProjectDialogComponent } from './dialog-components/create-project-dialog.component';
-import { BoardComponent } from './board/board.component';
+import { CreateBoardDialogComponent } from './dialog-components/create-board-dialog.component';
+import { KanbanBoardsComponent } from './kanban-boards/kanban-boards.component';
+
 @NgModule({
-  declarations: [ProjectListComponent, CreateProjectDialogComponent, BoardComponent],
+  declarations: [
+    ProjectListComponent,
+    CreateProjectDialogComponent,
+    CreateBoardDialogComponent,
+    KanbanBoardsComponent
+  ],
   imports: [
     CommonModule,
     ProjectRoutingModule,
