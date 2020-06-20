@@ -34,7 +34,7 @@ import { ProjectService } from '../project.service';
   styles: [
     `
       .closeButton {
-        font-size: 1.25rem;
+        font-size: 1.75rem;
         cursor: pointer;
       }
 
