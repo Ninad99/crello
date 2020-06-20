@@ -1,0 +1,20 @@
+@import '../../variables';
+
+.kanban-boards {
+  margin-top: $navbar-height;
+  height: calc(100vh - 58px);
+
+  .board-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    width: 300px;
+    padding: 32px;
+    height: 50px;
+  }
+}
