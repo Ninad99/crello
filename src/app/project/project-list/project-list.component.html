@@ -11,13 +11,15 @@
       <ng-container *ngIf="projects$ | async as projects;else loader">
         <h2 *ngIf="projects.length === 0">You don't have any created projects.</h2>
 
-        <mat-selection-list *ngIf="projects.length > 0" [multiple]="false">
-          <h2>Your projects:</h2>
-          <mat-list-option *ngFor="let p of projects" [routerLink]="p.projectId">
+        <mat-list *ngIf="projects.length > 0">
+          <mat-list-item *ngFor="let p of projects">
             <mat-icon matListIcon>event_note</mat-icon>
-            <h3 matLine> {{ p.title }} </h3>
-          </mat-list-option>
-        </mat-selection-list>
+            <h3 matLine class="project-title p-2" [routerLink]="p.projectId"> {{ p.title }} </h3>
+            <button mat-icon-button color="warn" (click)="confirmDelete(p.projectId)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
       </ng-container>
 
       <ng-template #loader>

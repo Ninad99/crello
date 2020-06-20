@@ -3,4 +3,8 @@
 .project-list {
   min-height: calc(100vh - 58px);
   margin-top: $navbar-height;
+
+  .project-title {
+    cursor: pointer;
+  }
 }

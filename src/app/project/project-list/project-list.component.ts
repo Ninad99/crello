@@ -41,4 +41,13 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  async confirmDelete(projectId: string): Promise<void> {
+    const isConfirmed = confirm('Are you sure?');
+
+    if (isConfirmed) {
+      await this.projectService.deleteProject(projectId);
+      this.snackService.openWithMessage('Deleted project', 'Dismiss');
+    }
+  }
 }
