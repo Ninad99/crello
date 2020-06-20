@@ -4,7 +4,8 @@ export enum AuthActionTypes {
   LOGIN_START = '[AUTH] Login start',
   LOGIN_SUCCESS = '[AUTH] Login success',
   LOGIN_FAILURE = '[AUTH] Login failure',
-  RESET_AUTH = '[AUTH] Reset auth'
+  RESET_AUTH = '[AUTH] Reset auth',
+  SET_REDIRECT_URL = '[AUTH] Set redirect url'
 }
 
 export class LoginStart implements Action {
@@ -25,4 +26,9 @@ export class ResetAuth implements Action {
   readonly type = AuthActionTypes.RESET_AUTH;
 }
 
-export type AuthAction = LoginStart | LoginSuccess | LoginFailure | ResetAuth;
+export class SetRedirectUrl implements Action {
+  readonly type = AuthActionTypes.SET_REDIRECT_URL;
+  constructor(public payload: string) {}
+}
+
+export type AuthAction = LoginStart | LoginSuccess | LoginFailure | ResetAuth | SetRedirectUrl;
