@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AuthReducer } from './store/reducers/auth.reducer';
 import { AuthEffects } from './store/effects/auth.effects';
+import { ThemeReducer } from './store/reducers/theme.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -29,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     StoreModule.forRoot({
-      auth: AuthReducer
+      auth: AuthReducer,
+      theme: ThemeReducer
     }),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
