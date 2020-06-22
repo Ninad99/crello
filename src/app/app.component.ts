@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Store } from '@ngrx/store';
 import { AppState } from './models/appstate.model';
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private afAuth: AngularFireAuth,
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) {
     this.loading = true;
   }
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.afAuth.onAuthStateChanged((user: firebase.User) => {
       if (user) {
         this.store.dispatch(new LoginSuccess());
-        if (this.redirectUrl) this.router.navigate([this.redirectUrl]);
+        if (this.redirectUrl) this.ngZone.run(() => this.router.navigate([this.redirectUrl]));
         this.loading = false;
       } else {
         this.loading = false;
