@@ -1,4 +1,4 @@
-<main style="min-height: 100vh;">
+<main style="min-height: 100vh;" [class.darkTheme]="isDarkTheme$ | async">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav
       #drawer
@@ -34,10 +34,16 @@
         <span class="fill-space"></span>
         <div *ngIf="!(isHandset$ | async) && !(isLoggedIn$ | async)">
           <a mat-button [routerLink]="['/login']">👨‍💻 Login</a>
+          <button mat-icon-button (click)="toggleTheme()">
+            <mat-icon matTooltip="Toggle Theme" matTooltipPosition="below">invert_colors</mat-icon>
+          </button>
         </div>
         <div *ngIf="!(isHandset$ | async) && (isLoggedIn$ | async)">
           <a mat-button [routerLink]="['/', 'projects']">📜 Open Projects</a>
           <a mat-button *ngIf="(isLoggedIn$ | async)" (click)="logout()">🏃 Logout</a>
+          <button mat-icon-button (click)="toggleTheme()">
+            <mat-icon matTooltip="Toggle Theme" matTooltipPosition="below">invert_colors</mat-icon>
+          </button>
         </div>
       </mat-toolbar>
       
