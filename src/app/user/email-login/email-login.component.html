@@ -26,7 +26,7 @@
 
   <form class="my-3 d-flex flex-column justify-content-center align-items-center" [formGroup]="form" (ngSubmit)="onSubmit($event)">
 
-    <mat-form-field class="my-2" [color]="email.valid && 'accent'">
+    <mat-form-field class="my-2" color="accent">
       <input
         matInput
         formControlName="email"
@@ -37,7 +37,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="my-2" [color]="password.valid && 'accent'" *ngIf="!isPasswordReset">
+    <mat-form-field class="my-2" color="accent" *ngIf="!isPasswordReset">
       <input
         matInput
         formControlName="password"
@@ -49,7 +49,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="my-2" [color]="passwordConfirm.valid && 'accent'" *ngIf="isSignup">
+    <mat-form-field class="my-2" color="accent" *ngIf="isSignup">
       <input
         matInput
         formControlName="passwordConfirm"
@@ -61,7 +61,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-spinner *ngIf="loading$ | async" class="my-3" color="primary" [diameter]="30"></mat-spinner>
+    <mat-spinner *ngIf="loading$ | async" class="my-3" color="accent" [diameter]="30"></mat-spinner>
 
     <p *ngIf="error$ | async as err">{{ err.message }}</p>
 
@@ -74,7 +74,7 @@
 
     <button *ngIf="isPasswordReset"
       mat-raised-button
-      color="primary"
+      color="accent"
       type="submit"
       [disabled]="(loading$ | async)">Send reset email</button>
   </form>
