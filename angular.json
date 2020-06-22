@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/app/_theme.scss",
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
             ],

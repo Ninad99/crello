@@ -1,0 +1,168 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$primary-light: (
+    50 : #e3e4e8,
+    100 : #b9bcc5,
+    200 : #8a909e,
+    300 : #5b6477,
+    400 : #37425a,
+    500 : #14213d,
+    600 : #121d37,
+    700 : #0e182f,
+    800 : #0b1427,
+    900 : #060b1a,
+    A100 : #597eff,
+    A200 : #2656ff,
+    A400 : #0035f2,
+    A700 : #0030d9,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$accent-light: (
+    50 : #fff4e2,
+    100 : #fee3b8,
+    200 : #fed188,
+    300 : #fdbf58,
+    400 : #fcb135,
+    500 : #fca311,
+    600 : #fc9b0f,
+    700 : #fb910c,
+    800 : #fb880a,
+    900 : #fa7705,
+    A100 : #ffffff,
+    A200 : #fff5ee,
+    A400 : #ffd7bb,
+    A700 : #ffc8a2,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$primary-dark: (
+    50 : #e7e9ea,
+    100 : #c4c7cc,
+    200 : #9da2aa,
+    300 : #757c87,
+    400 : #58606e,
+    500 : #3a4454,
+    600 : #343e4d,
+    700 : #2c3543,
+    800 : #252d3a,
+    900 : #181f29,
+    A100 : #6ea2ff,
+    A200 : #3b81ff,
+    A400 : #0861ff,
+    A700 : #0055ee,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$accent-dark: (
+    50 : #e7fbf3,
+    100 : #c2f5e0,
+    200 : #99eecc,
+    300 : #70e7b8,
+    400 : #52e2a8,
+    500 : #33dd99,
+    600 : #2ed991,
+    700 : #27d486,
+    800 : #20cf7c,
+    900 : #14c76b,
+    A100 : #f7fffb,
+    A200 : #c4ffdf,
+    A400 : #91ffc2,
+    A700 : #78ffb4,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$crello-light-primary: mat-palette($primary-light);
+$crello-light-accent: mat-palette($accent-light);
+
+// The warn palette is optional (defaults to red).
+$crello-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$crello-light-theme: mat-light-theme($crello-light-primary, $crello-light-accent, $crello-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($crello-light-theme);
+
+$crello-dark-primary: mat-palette($primary-dark);
+$crello-dark-accent: mat-palette($accent-dark);
+
+$crello-dark-theme: mat-dark-theme($crello-dark-primary, $crello-dark-accent, $crello-warn);
+
+.darkTheme {
+    @include angular-material-theme($crello-dark-theme);
+}
