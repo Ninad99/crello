@@ -14,8 +14,8 @@
 
   <div class="container-fluid" *ngIf="(isLoggedIn$ | async)">
     <div class="row flex-column justify-content-center align-items-center">
-      <p>You're already logged in</p>
-      <button class="my-3" mat-raised-button [routerLink]="['/', 'kanban']">Open Kanban Boards</button>
+      <p>Successfully logged in</p>
+      <button class="my-3" mat-raised-button color="accent" [routerLink]="['/', 'projects']">Open Kanban Boards</button>
     </div>
   </div>
 </section>
