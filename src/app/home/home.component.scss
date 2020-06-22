@@ -4,7 +4,6 @@
   margin-top: $navbar-height;
 
   .hero {
-    background-color: #e5e5e5;
     min-height: calc(100vh - 58px);
   }
 
@@ -16,5 +15,19 @@
     text-align: center;
     font-size: 1.25rem;
     font-weight: lighter;
+    padding: 1rem 3rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    &-title {
+      font-size: 1.75rem;
+    }
+
+    &-subtitle {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: normal;
+      padding: 0;
+    }
   }
 }
