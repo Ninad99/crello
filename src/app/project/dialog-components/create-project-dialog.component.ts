@@ -12,7 +12,7 @@ import { ProjectService } from '../project.service';
     </div>
     <div mat-dialog-content>
       <form [formGroup]="createProjectForm">
-        <mat-form-field>
+        <mat-form-field color="accent">
           <input placeholder="Title" matInput type="text" formControlName="title" />
           <mat-hint>Enter the title of your project</mat-hint>
           <mat-error>The title is required, and should be atleast 3 characters long!</mat-error>
@@ -20,7 +20,7 @@ import { ProjectService } from '../project.service';
       </form>
     </div>
     <div mat-dialog-actions class="py-3 d-flex justify-content-end align-items-center">
-      <mat-spinner [diameter]="32" ngClass="mr-3" *ngIf="loading"></mat-spinner>
+      <mat-spinner [diameter]="32" class="mr-3" *ngIf="loading"></mat-spinner>
       <button
         mat-raised-button
         color="primary"
