@@ -1,8 +1,11 @@
+export interface ChecklistItem {
+  title: string;
+  complete: boolean;
+}
+
 export interface Task {
   description?: string;
-  type?: string;
-  color?: 'purple' | 'blue' | 'green' | 'yellow' | 'red' | 'gray';
-  label?: 'purple' | 'blue' | 'green' | 'yellow' | 'red' | 'gray';
-  labels: string[];
+  label?: string;
+  checklist?: ChecklistItem[];
   title: string;
 }
