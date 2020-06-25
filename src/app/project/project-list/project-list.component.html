@@ -3,18 +3,18 @@
     <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
       <h2>Open an existing project</h2>
       <h3>OR</h3>
-      <button mat-raised-button color="primary" (click)="openCreateProjectDialog()">
+      <button mat-raised-button color="accent" (click)="openCreateProjectDialog()">
         Create a new Project!
       </button>
     </div>
-    <div class="col-md-8 py-4 d-flex flex-column justify-content-center align-items-stretch">
+    <div class="col-md-8 py-4 px-3 d-flex flex-column justify-content-center align-items-stretch">
       <ng-container *ngIf="projects$ | async as projects;else loader">
         <h2 *ngIf="projects.length === 0">You don't have any created projects.</h2>
 
         <mat-list *ngIf="projects.length > 0">
           <mat-list-item *ngFor="let p of projects">
             <mat-icon matListIcon>event_note</mat-icon>
-            <h3 matLine class="project-title p-2" [routerLink]="p.projectId"> {{ p.title }} </h3>
+            <span matRipple matLine class="project-title p-2" [routerLink]="p.projectId"> {{ p.title }} </span>
             <button mat-icon-button color="warn" (click)="confirmDelete(p.projectId)">
               <mat-icon>delete</mat-icon>
             </button>

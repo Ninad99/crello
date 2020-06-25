@@ -1,0 +1,13 @@
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin project-list-theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $background: map-get($theme, 'background');
+  $bgcolor: mat-color($background, 'background');
+
+  .project-title:hover {
+    background-color: darken($bgcolor, 5);
+  }
+}
