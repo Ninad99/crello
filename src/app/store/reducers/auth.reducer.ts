@@ -26,12 +26,14 @@ export function AuthReducer(state: AuthState = initialAuthState, action: AuthAct
       };
 
     case AuthActionTypes.LOGIN_START:
+    case AuthActionTypes.SIGN_UP_START:
       return {
         ...state,
         loading: true
       };
 
     case AuthActionTypes.LOGIN_SUCCESS:
+    case AuthActionTypes.SIGN_UP_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -40,6 +42,7 @@ export function AuthReducer(state: AuthState = initialAuthState, action: AuthAct
       };
 
     case AuthActionTypes.LOGIN_FAILURE:
+    case AuthActionTypes.SIGN_UP_FAILURE:
       return {
         ...state,
         loading: false,
