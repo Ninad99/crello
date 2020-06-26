@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Project } from '../models/project.model';
 import { Board } from '../models/board.model';
+import { Task } from '../models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +93,10 @@ export class ProjectService {
 
     for (const boardId of boardIds) {
       const board = (await this.db.collection<Board>('boards').doc(boardId).ref.get()).data();
-      boards.push(board);
+      boards.push({
+        id: boardId,
+        ...board
+      });
     }
 
     return Promise.resolve(boards);
@@ -106,7 +111,7 @@ export class ProjectService {
     const boardRef = await this.db.collection('boards').add({
       ...data,
       uid: user.uid,
-      tasks: [{ description: 'Hello!', label: 'Yellow' }]
+      tasks: []
     });
 
     const projectRef = this.db.collection('projects').doc(data.projectId).ref;
@@ -119,7 +124,78 @@ export class ProjectService {
   /**
    * Delete board
    */
-  deleteBoard(boardId: string): Promise<void> {
+  async deleteBoard(boardId: string, projectId?: string): Promise<void> {
+    if (projectId) {
+      const projectRef = this.db.collection<Project>('projects').doc(projectId).ref;
+      await projectRef.update({
+        boards: firebase.firestore.FieldValue.arrayRemove(boardId)
+      });
+    }
+
     return this.db.collection('boards').doc(boardId).delete();
+  }
+
+  /**
+   * Update single board with task list
+   */
+  updateSingleBoardTasks(boardId: string, tasks: Task[]): Promise<void> {
+    return this.db.collection<Board>('boards').doc(boardId).update({ tasks });
+  }
+
+  /**
+   * Update tasks between multiple boards
+   */
+  async updateMultipleBoardTasks(
+    prevBoardId: string,
+    currBoardId: string,
+    prevBoardData: Task[],
+    currBoardData: Task[]
+  ): Promise<void> {
+    const prevBoardRef = this.db.collection<Board>('boards').doc(prevBoardId).ref;
+    const currBoardRef = this.db.collection<Board>('boards').doc(currBoardId).ref;
+
+    const db = firebase.firestore();
+    const batch = db.batch();
+    batch.update(prevBoardRef, { tasks: prevBoardData });
+    batch.update(currBoardRef, { tasks: currBoardData });
+    return batch.commit();
+  }
+
+  /**
+   * Create a task
+   */
+  async createTask(task: Task, boardId: string): Promise<void> {
+    const boardRef = this.db.collection<Board>('boards').doc(boardId).ref;
+
+    return boardRef.update({
+      tasks: firebase.firestore.FieldValue.arrayUnion(task)
+    });
+  }
+
+  /**
+   * Update a task
+   */
+  async updateTask(task: Task, boardId: string, index: number): Promise<void> {
+    const boardRef = this.db.collection<Board>('boards').doc(boardId).ref;
+    const boardData = (await boardRef.get()).data();
+
+    const boardTasks = boardData.tasks;
+    boardTasks[index] = task;
+
+    return boardRef.update({
+      tasks: boardTasks
+    });
+  }
+
+  /**
+   * Delete a task
+   */
+  deleteTask(boardId: string, task: Task): Promise<void> {
+    return this.db
+      .collection<Board>('boards')
+      .doc(boardId)
+      .update({
+        tasks: firebase.firestore.FieldValue.arrayRemove(task)
+      });
   }
 }
