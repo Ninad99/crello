@@ -5,21 +5,26 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-import { ProjectListComponent } from './project-list/project-list.component';
 import { CreateProjectDialogComponent } from './dialog-components/create-project-dialog.component';
 import { CreateBoardDialogComponent } from './dialog-components/create-board-dialog.component';
+import { CreateTaskDialogComponent } from './dialog-components/create-task-dialog.component';
+import { ProjectListComponent } from './project-list/project-list.component';
 import { KanbanBoardsComponent } from './kanban-boards/kanban-boards.component';
+import { ViewTaskDialogComponent } from './dialog-components/view-task-dialog.component';
 
 @NgModule({
   declarations: [
     ProjectListComponent,
     CreateProjectDialogComponent,
     CreateBoardDialogComponent,
-    KanbanBoardsComponent
+    KanbanBoardsComponent,
+    CreateTaskDialogComponent,
+    ViewTaskDialogComponent
   ],
   imports: [
     CommonModule,
@@ -27,10 +32,16 @@ import { KanbanBoardsComponent } from './kanban-boards/kanban-boards.component';
     SharedModule,
     ReactiveFormsModule,
     DragDropModule,
-    MatButtonToggleModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    TextFieldModule,
+    MatCheckboxModule
   ],
-  entryComponents: [CreateProjectDialogComponent]
+  entryComponents: [
+    CreateProjectDialogComponent,
+    CreateBoardDialogComponent,
+    CreateTaskDialogComponent,
+    ViewTaskDialogComponent
+  ]
 })
 export class ProjectModule {}

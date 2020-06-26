@@ -13,10 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { LayoutComponent } from './layout/layout.component';
-import { DeleteButtonComponent } from './delete-button/delete-button.component';
 
-const components = [LayoutComponent, DeleteButtonComponent];
+const components = [LayoutComponent];
 
 const modules = [
   RouterModule,
@@ -31,7 +32,9 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatRippleModule,
+  MatTooltipModule
 ];
 
 @NgModule({
