@@ -63,7 +63,8 @@
 
     <mat-spinner *ngIf="loading$ | async" class="my-3" color="accent" [diameter]="30"></mat-spinner>
 
-    <p *ngIf="error$ | async as err">{{ err.message }}</p>
+    <p *ngIf="error$ | async as err" style="color: orangered">{{ err.message }}</p>
+    <p *ngIf="serverMessage">{{ serverMessage }}</p>
 
     <button
       *ngIf="!isPasswordReset"

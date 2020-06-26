@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/appstate.model';
-import { LoginStart } from 'src/app/store/actions/auth.actions';
+import { LoginStart, SignupStart } from 'src/app/store/actions/auth.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -73,24 +73,31 @@ export class EmailLoginComponent implements OnInit {
 
   async onSubmit(event: Event): Promise<void> {
     event.preventDefault();
+    this.serverMessage = '';
 
     const email = this.email.value;
     const password = this.password.value;
 
-    try {
-      if (this.isLogin) {
-        this.store.dispatch(new LoginStart({ email: email, password: password }));
-        // await this.afAuth.signInWithEmailAndPassword(email, password);
+    if (this.isLogin) {
+      this.store.dispatch(new LoginStart({ email: email, password: password }));
+    }
+    if (this.isSignup) {
+      this.store.dispatch(new SignupStart({ email: email, password: password }));
+    }
+    if (this.isPasswordReset) {
+      try {
+        const loginMethods = await this.afAuth.fetchSignInMethodsForEmail(email);
+        if (loginMethods.includes('password')) {
+          await this.afAuth.sendPasswordResetEmail(email);
+          this.serverMessage = 'A password reset link has been sent to your email.';
+        } else {
+          throw new Error(
+            'There is no account associated with this email. Try signing in with a different authentication provider or signing up.'
+          );
+        }
+      } catch (err) {
+        this.serverMessage = err;
       }
-      if (this.isSignup) {
-        await this.afAuth.createUserWithEmailAndPassword(email, password);
-      }
-      if (this.isPasswordReset) {
-        await this.afAuth.sendPasswordResetEmail(email);
-        this.serverMessage = 'Check your email';
-      }
-    } catch (err) {
-      this.serverMessage = err;
     }
   }
 }
