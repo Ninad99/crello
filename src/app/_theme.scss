@@ -2,7 +2,8 @@
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
-
+@import './project/kanban-boards/kanban-boards.theme.scss';
+@import './project/project-list/project-list.theme.scss';
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -140,7 +141,13 @@ $accent-dark: (
     )
 );
 
+$custom-typography: mat-typography-config(
+    $font-family: 'Quicksand, monospace',
+    $headline: mat-typography-level(32px, 48px, 700),
+    $body-1: mat-typography-level(16px, 24px, 500)
+);
 
+@include angular-material-typography($custom-typography);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
@@ -157,6 +164,8 @@ $crello-light-theme: mat-light-theme($crello-light-primary, $crello-light-accent
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($crello-light-theme);
+@include kanban-boards-theme($crello-light-theme);
+@include project-list-theme($crello-light-theme);
 
 $crello-dark-primary: mat-palette($primary-dark);
 $crello-dark-accent: mat-palette($accent-dark);
@@ -165,4 +174,6 @@ $crello-dark-theme: mat-dark-theme($crello-dark-primary, $crello-dark-accent, $c
 
 .darkTheme {
     @include angular-material-theme($crello-dark-theme);
+    @include kanban-boards-theme($crello-dark-theme);
+    @include project-list-theme($crello-dark-theme);
 }
