@@ -20,15 +20,15 @@ interface EditTaskData {
       [style.borderTop]="'2px solid'"
       [style.borderColor]="taskLabel"
     >
-      <h2 *ngIf="_operation === 'view'" class="m-0 p-0 d-flex align-items-center">
-        <mat-icon>sticky_note_2</mat-icon>&nbsp;&nbsp;{{ taskTitle }}&nbsp;
+      <h2 *ngIf="_operation === 'view'" class="m-0 p-0 d-flex flex-wrap align-items-center">
+        <mat-icon>sticky_note_2</mat-icon>&nbsp;{{ taskTitle }}&nbsp;
         <em>({{ taskData.boardName }})</em>&nbsp;&nbsp;
         <button
           (click)="toggleEdit()"
           mat-icon-button
           color="accent"
           matTooltip="Edit"
-          matTooltipPosition="right"
+          matTooltipPosition="above"
         >
           <mat-icon>create</mat-icon></button
         ><br />
@@ -37,7 +37,7 @@ interface EditTaskData {
           mat-icon-button
           color="warn"
           matTooltip="Delete Task"
-          matTooltipPosition="right"
+          matTooltipPosition="above"
         >
           <mat-icon>delete</mat-icon></button
         ><br />

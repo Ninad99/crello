@@ -16,6 +16,7 @@ import { CreateTaskDialogComponent } from './dialog-components/create-task-dialo
 import { ProjectListComponent } from './project-list/project-list.component';
 import { KanbanBoardsComponent } from './kanban-boards/kanban-boards.component';
 import { ViewTaskDialogComponent } from './dialog-components/view-task-dialog.component';
+import { CountCompletePipe } from './count-complete.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ViewTaskDialogComponent } from './dialog-components/view-task-dialog.co
     CreateBoardDialogComponent,
     KanbanBoardsComponent,
     CreateTaskDialogComponent,
-    ViewTaskDialogComponent
+    ViewTaskDialogComponent,
+    CountCompletePipe
   ],
   imports: [
     CommonModule,

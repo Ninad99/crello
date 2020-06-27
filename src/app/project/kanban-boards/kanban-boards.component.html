@@ -1,15 +1,65 @@
 <section class="kanban-boards container-fluid">
   <div *ngIf="project; else loader">
-    <h1 class="py-4" style="text-align: center;">{{ project.title }}</h1>
-    <div class="row p-2 justify-content-start align-items-center">
+    <h2 class="py-2 m-0" style="text-align: center;">{{ project.title }}</h2>
+    <div class="d-flex flex-nowrap m-0 py-0 px-2 justify-content-start align-items-start" style="overflow-x: scroll; height: calc(100vh - 108px);">
 
-      <div *ngIf="boards.length > 0 && !loading; else innerloader">
-        <p *ngFor="let board of boards">
-          {{ board | json }}
-        </p>
-      </div>
+      <ng-container cdkDropListGroup *ngIf="boards.length >= 0 && !loading; else innerloader">
+        <mat-card *ngFor="let board of boards" class="outer-card">
+          <div class="container mb-3 d-flex justify-content-between align-items-center card-header">
+            <span>{{ board.title }}</span>
+            <div>
+              <button
+                mat-mini-fab
+                color="primary"
+                class="mr-2"
+                (click)="openNewTaskDialog(board.id)"
+                matTooltip="Add Task"
+                matTooltipPosition="above">
+                <mat-icon>add</mat-icon>
+              </button>
+              <button
+                mat-mini-fab
+                color="warn"
+                (click)="deleteBoard(board.id)"
+                matTooltip="Delete Board"
+                matTooltipPosition="above">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        
+          <mat-card-content class="tasks-container">
+            <div
+              [id]="board.id"
+              class="tasks"
+              cdkDropList
+              [cdkDropListData]="boardTasks.get(board.id)"
+              (cdkDropListDropped)="taskDrop($event, board.id)">
+              <div *ngIf="boardTasks.get(board.id).length === 0" style="text-align: center;">
+                No tasks here!
+              </div>
+              <div
+                cdkDrag
+                class="inner-card"
+                *ngFor="let task of boardTasks.get(board.id); let i = index"
+                (click)="openEditTaskDialog(task, i, board.id, board.title)">
+                <mat-card>
+                  <mat-card-content>
+                    <h3 class="mb-2">{{ task.title }}</h3>
+                    <div class="checklist-overview color-success" *ngIf="task.checklist.length > 0">
+                      <mat-icon>check_circle</mat-icon>
+                      &nbsp;{{ task.checklist | countComplete }}
+                    </div>
+                    <span class="task-label" [style.background]="task.label">&nbsp;</span>
+                  </mat-card-content>
+                </mat-card>  
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
 
-      <div class="board-button">
+      <mat-card class="board-button" *ngIf="boards.length >= 0 && !loading">
         <button
           mat-flat-button
           color="accent"
@@ -17,10 +67,12 @@
           (click)="openBoardDialog(project.boards.length)">
           New Board
         </button>
-      </div>
-    
+      </mat-card>
+
       <ng-template #innerloader>
-        <mat-spinner [diameter]="30"></mat-spinner>
+        <div class="row justify-content-center align-items-center" style="width: 100%;">
+          <mat-spinner [diameter]="30"></mat-spinner>
+        </div>
       </ng-template>
     </div>
   </div>
