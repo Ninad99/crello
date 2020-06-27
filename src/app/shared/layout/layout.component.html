@@ -14,7 +14,7 @@
         <a mat-list-item (click)="toggleTheme(); drawer.close()">🎇 Toggle Theme</a>
         <a *ngIf="!(isLoggedIn$ | async)" mat-list-item [routerLink]="['/login']" (click)="drawer.close()" >👨‍💻 Login</a>
         <ng-container *ngIf="(isLoggedIn$ | async)">
-          <a mat-list-item [routerLink]="['/', 'projects']" (click)="drawer.close()">📜 Open Projects</a>
+          <a mat-list-item [routerLink]="['/', 'projects']" (click)="drawer.close()">📜 Projects</a>
           <a mat-list-item (click)="logout(); drawer.close();" >🏃 Logout</a>
         </ng-container>
       </mat-nav-list>
@@ -40,7 +40,7 @@
           </button>
         </div>
         <div *ngIf="!(isHandset$ | async) && (isLoggedIn$ | async)">
-          <a mat-button [routerLink]="['/', 'projects']">📜 Open Projects</a>
+          <a mat-button [routerLink]="['/', 'projects']">📜 Projects</a>
           <a mat-button *ngIf="(isLoggedIn$ | async)" (click)="logout()">🏃 Logout</a>
           <button mat-icon-button (click)="toggleTheme()">
             <mat-icon matTooltip="Toggle Theme" matTooltipPosition="below">invert_colors</mat-icon>
