@@ -2,7 +2,7 @@
   <div class="container-fluid" *ngIf="!(isLoggedIn$ | async)">
     <div class="row flex-column justify-content-center align-items-center">
 
-      <button class="my-3" mat-raised-button appGoogleSignin>
+      <button class="my-3 google-login" mat-raised-button appGoogleSignin>
         <img src="/assets/img/google-logo.svg" height="17px" width="17px" alt="Google">  Login with Google
       </button>
 
@@ -15,7 +15,7 @@
   <div class="container-fluid" *ngIf="(isLoggedIn$ | async)">
     <div class="row flex-column justify-content-center align-items-center">
       <p>Successfully logged in</p>
-      <button class="my-3" mat-raised-button color="accent" [routerLink]="['/', 'projects']">Open Project List</button>
+      <button class="my-3 open-projects" mat-raised-button color="accent" [routerLink]="['/', 'projects']">Open Project List</button>
     </div>
   </div>
 </section>

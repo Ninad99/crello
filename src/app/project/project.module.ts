@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatListModule } from '@angular/material/list';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
@@ -35,7 +34,6 @@ import { CountCompletePipe } from './count-complete.pipe';
     ReactiveFormsModule,
     DragDropModule,
     MatDialogModule,
-    MatListModule,
     TextFieldModule,
     MatCheckboxModule
   ],

@@ -34,12 +34,14 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       width: '400px'
     });
 
-    this._subscription = dialogRef.afterClosed().subscribe(async (result: { created: boolean }) => {
-      if (result?.created) {
-        this.snackService.openWithMessage('Successfully created!', 'Dismiss');
-        this._subscription.unsubscribe();
-      }
-    });
+    this._subscription = dialogRef
+      ?.afterClosed()
+      .subscribe(async (result: { created: boolean }) => {
+        if (result?.created) {
+          this.snackService.openWithMessage('Successfully created!', 'Dismiss');
+          this._subscription.unsubscribe();
+        }
+      });
   }
 
   async confirmDelete(projectId: string): Promise<void> {
