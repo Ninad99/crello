@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ProjectRoutingModule } from './project-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TextFieldModule } from '@angular/cdk/text-field';
@@ -31,7 +30,6 @@ import { CountCompletePipe } from './count-complete.pipe';
     CommonModule,
     ProjectRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
     DragDropModule,
     MatDialogModule,
     TextFieldModule,

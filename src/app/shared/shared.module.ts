@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -34,7 +35,8 @@ const modules = [
   MatSnackBarModule,
   MatProgressSpinnerModule,
   MatRippleModule,
-  MatTooltipModule
+  MatTooltipModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({
