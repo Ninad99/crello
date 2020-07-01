@@ -146,12 +146,13 @@ export class KanbanBoardsComponent implements OnInit, OnDestroy {
       .afterClosed()
       .subscribe((result: { saved: boolean; task: Task; deleted: boolean }) => {
         if (result?.saved) {
-          this.snackService.openWithMessage('Updated!', 'Dismiss');
           if (result?.deleted) {
             const tasks = this.boardTasks.get(boardId).filter((task, idx) => idx !== index);
             this.boardTasks.set(boardId, tasks);
+            this.snackService.openWithMessage('Deleted!', 'Dismiss');
           } else {
             this.boardTasks.get(boardId)[index] = result.task;
+            this.snackService.openWithMessage('Updated!', 'Dismiss');
           }
         } else if (result && !result?.saved && !result?.task) {
           this.snackService.openWithMessage('Something went wrong... try again?', 'Dismiss');
