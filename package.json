@@ -4,12 +4,16 @@
   "author": "Ninad Subba <ninuch7@gmail.com>",
   "scripts": {
     "ng": "ng",
+    "clean": "rimraf ./dist",
     "config": "ts-node ./scripts/setenv.ts",
     "start": "npm run config -- --environment=dev && ng serve",
-    "build": "npm run config -- --environment=prod && ng build --prod",
-    "test": "ng test",
+    "build": "npm run config -- --environment=prod && ng build",
+    "build:prod": "npm run config -- --environment=prod && ng build --prod",
+    "test": "ng test --watch=false --browsers=ChromeHeadlessCustom",
+    "test:watch": "ng test",
     "lint": "eslint src/**/*.ts",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:ci": "npm run clean && npm run test && npm run build:prod"
   },
   "private": true,
   "dependencies": {
@@ -61,6 +65,7 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "prettier": "^2.0.5",
     "protractor": "~5.4.3",
+    "puppeteer": "^4.0.1",
     "ts-node": "~8.3.0",
     "typescript": "~3.8.3",
     "yargs": "^15.3.1"
