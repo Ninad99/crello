@@ -1,26 +1,44 @@
-# Crello
+<h1 style="text-align: center;">Crello</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+  <img src="https://img.shields.io/badge/frontend-Angular-red?logo=angular" style="margin-right: 1rem;" />
+  <img src="https://img.shields.io/badge/backend-Firebase-yellow?logo=firebase" style="margin-right: 1rem;" />
+  <img src="https://img.shields.io/badge/PRs-Welcome!-brightgreen" />
+</div>
 
-## Development server
+<h4 style="text-align: center;">Crello is an open-source, web-based, Kanban-style, list-making application, heavily inspired by <a href="https://trello.com/home">Trello</a>.</h4>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<img src="./src/assets/img/Work at home.svg" />
+
+## Tech stack
+
+- [Angular](https://angular.io/docs)
+- [Angular Material](https://material.angular.io/)
+- [RxJS](https://rxjs.dev/guide/overview)
+- [NgRx](https://ngrx.io/)
+- [angularfire](https://github.com/angular/angularfire)
+- [Firebase](https://firebase.google.com/)
+- [Jasmine](https://github.com/jasmine/jasmine) and [Karma](https://github.com/karma-runner/karma)
+
+## Contributing to the repository
+
+Read the [contribution guidelines](./CONTRIBUTING.md).
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+## Linting
+
+Run `npm run lint` to run [eslint](https://eslint.org/). The project uses eslint and prettier [instead of tslint](https://www.darraghoriordan.com/2020/03/06/upgrade-tslint-deprecated-to-eslint/).
+
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `build:prod` command for a production build.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run test:watch` to execute the unit tests via [Karma](https://karma-runner.github.io) in watch mode. Use the `test` command to execute the unit tests using a headless version of Chrome. A “headless” browser is a browser that does not have a visual GUI.
 
 ## Further help
 
