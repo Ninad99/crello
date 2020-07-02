@@ -8,9 +8,9 @@ The following is a set of guidelines for contributing to Crello on GitHub. These
 
 1. [Code of Conduct](#code-of-conduct)
 2. [How can I contribute?](#how-can-i-contribute)
-  - [Reporting bugs](#reporting-bugs)
-  - [Suggesting enhancements/Feature requests](#suggesting-enhancementsfeature-requests)
-  - [Code contribution/Pull requests](#code-contributionpull-requests)
+    - [Reporting bugs](#reporting-bugs)
+    - [Suggesting enhancements/Feature requests](#suggesting-enhancementsfeature-requests)
+    - [Code contribution/Pull requests](#code-contributionpull-requests)
 3. [Setup instructions](#setup-instructions)
 
 ## Code of Conduct
