@@ -15,7 +15,7 @@ The following is a set of guidelines for contributing to Crello on GitHub. These
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by a [Code of Conduct](). By participating, you are expected to uphold this code.
+This project and everyone participating in it is governed by a [Code of Conduct](https://github.com/Ninad99/crello/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## How can I contribute?
 
